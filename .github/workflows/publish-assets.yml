@@ -12,6 +12,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # Dispatch from main because release-triggered Pages deploys can leave stale content.
+  # https://github.com/actions/deploy-pages/issues/383
   dispatch:
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
